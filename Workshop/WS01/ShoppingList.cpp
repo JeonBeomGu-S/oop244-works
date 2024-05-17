@@ -1,6 +1,9 @@
 //
-// Created by Beomgu Jeon on 2024-05-10.
-//
+// Created by Beomgu Jeon on 2024-05-17.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #include "ShoppingList.h"
 #include "ShoppingRec.h"
 #include "Utils.h"

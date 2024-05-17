@@ -1,3 +1,9 @@
+//
+// Created by Beomgu Jeon on 2024-05-17.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #ifndef SENECA_SHOPPINGLIST_H
 #define SENECA_SHOPPINGLIST_H
 #include <iostream>
