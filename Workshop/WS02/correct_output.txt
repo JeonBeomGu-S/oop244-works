@@ -1,0 +1,17 @@
+Employee Salary report, sorted by employee number
+no- Empno, Name, Salary
+------------------------------------------------
+1- 117493: Bumblebee Man, 43554.1
+2- 238023: Alice Glick, 15310.6
+3- 261382: Artie Ziff, 44801.1
+4- 268411: Bernice Hibbert, 27776.9
+5- 463877: Allison Taylor, 93971.9
+6- 529967: Abraham Simpson, 80084.4
+7- 543817: Barney Gumble, 54858.7
+8- 737371: Agnes Skinner, 32943.1
+9- 760089: Akira Kurosawa, 55772
+10- 811518: Baby Gerald, 90670.1
+11- 836915: Apu Nahasapeemapetilon, 63415.7
+12- 881837: Bart Simpson, 47608.2
+13- 928072: Carl Carlson, 23678.4
+14- 954291: Brandine Spuckler, 51499.7
