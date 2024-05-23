@@ -132,7 +132,7 @@ namespace seneca {
         int i = 0;
         for (i = 0; i < noOfEmployees; ++i) {
             delete[] (employees + i)->m_name;
-            employees->m_name = nullptr;
+            (employees + i)->m_name = nullptr;
         }
         delete[] employees;
         employees = nullptr;
