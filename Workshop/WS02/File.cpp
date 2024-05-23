@@ -1,3 +1,9 @@
+//
+// Created by Beomgu Jeon on 2024-05-23.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <cstdio>
