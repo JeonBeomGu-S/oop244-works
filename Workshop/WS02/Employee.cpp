@@ -131,7 +131,7 @@ namespace seneca {
     void deallocateMemory() {
         int i = 0;
         for (i = 0; i < noOfEmployees; ++i) {
-            delete[] employees->m_name;
+            delete[] (employees + i)->m_name;
             employees->m_name = nullptr;
         }
         delete[] employees;

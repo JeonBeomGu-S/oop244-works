@@ -32,7 +32,7 @@ namespace seneca {
     }
 
     // TODO: read functions go here
-    bool read(const char *name) {
+    bool read(char *name) {
         int result = fscanf(fptr, "%[^\n]\n", name);
         return result == 1;
     }
