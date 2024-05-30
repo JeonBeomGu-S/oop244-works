@@ -1,3 +1,9 @@
+//
+// Created by Beomgu Jeon on 2024-05-30.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #include <iostream>
 #include <cstring>
 #include "Bill.h"

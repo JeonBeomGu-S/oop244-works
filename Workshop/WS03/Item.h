@@ -1,3 +1,9 @@
+//
+// Created by Beomgu Jeon on 2024-05-30.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #ifndef SENECA_ITEM_H_
 #define SENECA_ITEM_H_
 #define TAX_RATE 0.13
