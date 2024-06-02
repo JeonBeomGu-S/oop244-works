@@ -6,6 +6,12 @@
 
 #ifndef SENECA_CANISTER_H
 #define SENECA_CANISTER_H
+#define PI 3.14159265
+#define MIN_HEIGHT 10
+#define MIN_DIAMETER 10
+#define MAX_HEIGHT 40
+#define MAX_DIAMETER 30
+
 #include <iostream>
 namespace seneca {
    class Canister {
