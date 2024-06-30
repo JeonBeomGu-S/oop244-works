@@ -11,12 +11,13 @@ namespace seneca {
    class Line {
       char* m_value{ nullptr };
       operator const char* ()const;
-      Line() {}
+      Line();
       Line& operator=(const char*);
       ~Line();
       friend class TextFile;
       // copy and copy assignment prevention goes here
-
+      Line(const Line&) = delete;
+      Line& operator=(const Line&) = delete;
    };
 
    class TextFile {
