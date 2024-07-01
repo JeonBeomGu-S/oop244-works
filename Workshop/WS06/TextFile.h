@@ -21,8 +21,8 @@ namespace seneca {
    };
 
    class TextFile {
-      Line* m_textLines;
-      char* m_filename;
+      Line* m_textLines{ nullptr };
+      char* m_filename{ nullptr };
       unsigned m_noOfLines;
       unsigned m_pageSize;
       void setFilename(const char* fname, bool isCopy = false);

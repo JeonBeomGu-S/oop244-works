@@ -155,10 +155,7 @@ namespace seneca {
      * Creates an empty TextFile and initializes the m_pageSize attribute using the pageSize argument.
      */
     TextFile::TextFile(unsigned int pageSize) {
-//        setEmpty(); ToDo: Fix
-        m_textLines = nullptr;
-        m_filename = nullptr;
-        m_noOfLines = 0;
+        setEmpty();
         m_pageSize = pageSize;
     }
 
@@ -167,11 +164,8 @@ namespace seneca {
      * Then if the filename is not null, it will set the filename, set the number of Lines and load the Text (using the corresponding private methods.)
      */
     TextFile::TextFile(const char *filename, unsigned int pageSize) {
-        m_textLines = nullptr;
-        m_filename = nullptr;
-        m_noOfLines = 0;
         m_pageSize = pageSize;
-//        setEmpty(); ToDo: Fix
+        setEmpty();
         if (filename != nullptr && filename[0] != '\0') {
             setFilename(filename, false);
             setNoOfLines();
@@ -192,10 +186,7 @@ namespace seneca {
         if (!textFile)
             return;
 
-//        setEmpty(); ToDo: Fix
-        m_textLines = nullptr;
-        m_filename = nullptr;
-        m_noOfLines = 0;
+        setEmpty();
         m_pageSize = textFile.m_pageSize;
 
         // Set file to copy
@@ -224,10 +215,7 @@ namespace seneca {
             char *originalFileName = new char[strlen(m_filename) + 1];
             strcpy(originalFileName, m_filename);
 
-//            setEmpty(); ToDo: Fix
-            m_filename = nullptr;
-            m_textLines = nullptr;
-            m_noOfLines = 0;
+            setEmpty();
             m_pageSize = textFile.m_pageSize;
 
             // set file to copy
@@ -318,7 +306,7 @@ namespace seneca {
      * Then sets the number of lines and loads the Text. When done it will return the istr;
      */
     std::istream &TextFile::getFile(istream &istr) {
-//        istr >> m_filename;
+        setEmpty();
         char buffer[100];
         istr >> buffer;
         setFilename(buffer);
