@@ -144,7 +144,7 @@ namespace seneca {
         ofstream file(fileName);
 
         if (file.is_open()) {
-            int i = 0;
+            unsigned i = 0;
             for (i = 0; i < m_noOfLines - 1; i++) {
                 file << m_textLines[i].m_value << '\n';
             }
@@ -274,8 +274,8 @@ namespace seneca {
         ostr << m_filename << endl;
         ostr << "==========" << endl;
 
-        int i = 0;
-        int page = 0;
+        unsigned i = 0;
+        unsigned page = 0;
         bool isFinish = false;
 
         while (page < (m_noOfLines / m_pageSize) + 1) {
@@ -291,8 +291,8 @@ namespace seneca {
 
                 if (!isFinish) {
                     ostr << "Hit ENTER to continue...";
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     string input;
+                    cin.ignore();
                     getline(cin, input);
                 }
             }
