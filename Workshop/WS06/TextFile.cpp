@@ -61,6 +61,10 @@ namespace seneca {
      * If the isCopy argument is true, dynamically allocates a Cstring in m_filename and copies the content of the fname argument with a prefix of "C_" attached to it.
      */
     void TextFile::setFilename(const char *fname, bool isCopy) {
+        if (m_filename != nullptr) {
+            delete[] m_filename;
+            m_filename = nullptr;
+        }
         if (!isCopy) {
             m_filename = new char[strlen(fname) + 1];
             m_filename = strcpy(m_filename, fname);
@@ -228,6 +232,8 @@ namespace seneca {
             saveAs(m_filename);
             setNoOfLines();
             loadText();
+
+            delete[] originalFileName;
         }
         return *this;
     }
