@@ -1,13 +1,9 @@
-// Final Project Milestone 1 
-// Date Module
-// File	Date.h
-// Version 1.0
-// Author	Fardad Soleimanloo
-// Revision History
-// -----------------------------------------------------------
-// Name               Date                 Reason
-// 
-/////////////////////////////////////////////////////////////////
+//
+// Created by Beomgu Jeon on 2024-07-03.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #ifndef SENECA_DATE_H__
 #define SENECA_DATE_H__
 #include <iostream>
@@ -50,6 +46,19 @@ namespace seneca {
       int currentYear()const;         // returns the m_CUR_YEAR value;
 
       
+      std::istream &read(std::istream &is = std::cin);
+      std::ostream &write(std::ostream &os = std::cout) const;
+
+      bool operator==(const Date &right);
+      bool operator!=(const Date &right);
+      bool operator>=(const Date &right);
+      bool operator<=(const Date &right);
+      bool operator<(const Date &right);
+      bool operator>(const Date &right);
+
+      int operator-(const Date &right);
+
+      operator bool() const;
    };
    std::ostream& operator<<(std::ostream& os, const Date& RO);
    std::istream& operator>>(std::istream& is, Date& RO);
