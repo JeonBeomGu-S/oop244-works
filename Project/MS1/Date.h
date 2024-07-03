@@ -56,7 +56,7 @@ namespace seneca {
       friend bool operator<(const Date &left, const Date &right);
       friend bool operator>(const Date &left, const Date &right);
 
-      int operator-(const Date &right);
+      friend int operator-(const Date &left, const Date &right);
 
       operator bool() const;
    };

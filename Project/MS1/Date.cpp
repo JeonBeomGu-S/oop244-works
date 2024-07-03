@@ -149,8 +149,8 @@ namespace seneca {
         return left.daysSince0001_1_1() > right.daysSince0001_1_1();
     }
 
-    int Date::operator-(const Date &right) {
-        return this->daysSince0001_1_1() - right.daysSince0001_1_1();
+    int operator-(const Date &left, const Date &right) {
+        return left.daysSince0001_1_1() - right.daysSince0001_1_1();
     }
 
     Date::operator bool() const {
