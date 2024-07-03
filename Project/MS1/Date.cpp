@@ -107,14 +107,18 @@ namespace seneca {
     }
 
     ostream& Date::write(ostream &os) const {
-        os << m_year;
-        os << "/";
-        os.width(2);
-        os.setf(ios::right);
-        os.fill('0');
-        os << m_mon;
-        os << "/";
-        os << m_day;
+        if (bad()) {
+            os << dateStatus();
+        } else {
+            os << m_year;
+            os << "/";
+            os.width(2);
+            os.setf(ios::right);
+            os.fill('0');
+            os << m_mon;
+            os << "/";
+            os << m_day;
+        }
         return os;
     }
 
