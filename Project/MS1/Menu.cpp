@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -73,20 +74,7 @@ namespace seneca {
 
     unsigned int Menu::run() {
         display();
-        unsigned int menuNum = -1;
-        do {
-            cin >> menuNum;
-            if (cin.fail() || menuNum < 0 || menuNum > noOfItems) {
-                cout << "Invalid Selection, try again: ";
-                menuNum = -1;
-            }
-            cin.clear();
-            // clear input buffer
-            char ch = 'x';
-            while (ch != '\n') {
-                ch = cin.get();
-            }
-        } while (cin.fail() || menuNum < 0 || menuNum > noOfItems);
+        unsigned int menuNum = getIntMM(0, (int) noOfItems);
 
         return menuNum;
     }
