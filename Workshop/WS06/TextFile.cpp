@@ -297,9 +297,16 @@ namespace seneca {
 
                 if (!isFinish) {
                     ostr << "Hit ENTER to continue...";
-                    string input;
-                    cin.ignore();
-                    getline(cin, input);
+
+                    // Clean the input buffer
+                    char ch = 'x';
+                    while(ch != '\n') {
+                        ch = getchar();
+                    }
+
+                    // Input enter
+                    char cstr[3];
+                    scanf("%[^\n]", cstr);
                 }
             }
             ++page;
