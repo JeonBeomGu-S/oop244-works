@@ -49,12 +49,12 @@ namespace seneca {
       std::istream &read(std::istream &is = std::cin);
       std::ostream &write(std::ostream &os = std::cout) const;
 
-      bool operator==(const Date &right);
-      bool operator!=(const Date &right);
-      bool operator>=(const Date &right);
-      bool operator<=(const Date &right);
-      bool operator<(const Date &right);
-      bool operator>(const Date &right);
+      friend bool operator==(const Date &left, const Date &right);
+      friend bool operator!=(const Date &left, const Date &right);
+      friend bool operator>=(const Date &left, const Date &right);
+      friend bool operator<=(const Date &left, const Date &right);
+      friend bool operator<(const Date &left, const Date &right);
+      friend bool operator>(const Date &left, const Date &right);
 
       int operator-(const Date &right);
 
