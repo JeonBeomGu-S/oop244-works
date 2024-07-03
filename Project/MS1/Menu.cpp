@@ -50,25 +50,26 @@ namespace seneca {
     }
 
     Menu::~Menu() {
-        int i = 0;
+        unsigned int i = 0;
         for (i = 0; i < noOfItems; i++) {
             if (menuItems[i] != nullptr)
                 delete menuItems[i];
         }
+        delete[] title;
     }
 
     void Menu::display() const {
         if (title != nullptr && title[0] != '\0') {
             cout << title << ":" << endl;
         }
-        int i = 0;
+        unsigned int i = 0;
         for (i = 0; i < noOfItems; i++) {
             cout.width(2);
             cout.fill(' ');
             cout << right << (i + 1);
             cout << "- " << (const char*) *menuItems[i] << endl;
         }
-        cout << " 0- Exit" << endl << " > ";
+        cout << " 0- Exit" << endl << "> ";
     }
 
 

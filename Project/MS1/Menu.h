@@ -1,6 +1,7 @@
 #ifndef SENECA_MENU_H__
 #define SENECA_MENU_H__
 #include <iostream>
+#include <cstring>
 
 namespace seneca {
     const unsigned int MAX_MENU_ITEMS = 20;
