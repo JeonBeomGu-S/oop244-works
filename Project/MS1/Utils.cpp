@@ -1,17 +1,10 @@
-/***********************************************************************
-// OOP244 Utils Module
-// File	Utils.cpp
-// Version
-// Date
-// Author
-// Description
 //
-// Revision History
-// -----------------------------------------------------------
-// Name            Date            Reason
+// Created by Beomgu Jeon on 2024-07-04.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 //
-/////////////////////////////////////////////////////////////////
-***********************************************************************/
 
 #include "Utils.h"
 

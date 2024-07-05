@@ -1,17 +1,11 @@
-/***********************************************************************
-// OOP244 Utils Module
-// File	Utils.h
-// Version 
-// Date	
-// Author	
-// Description
 //
-// Revision History
-// -----------------------------------------------------------
-// Name            Date            Reason
-// 
-/////////////////////////////////////////////////////////////////
-***********************************************************************/
+// Created by Beomgu Jeon on 2024-07-04.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
+//
+
 #ifndef SENECA_UTILS_H__
 #define SENECA_UTILS_H__
 

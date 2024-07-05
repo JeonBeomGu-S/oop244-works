@@ -1,3 +1,11 @@
+//
+// Created by Beomgu Jeon on 2024-07-04.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
+//
+
 #ifndef SENECA_LIBAPP_H
 #define SENECA_LIBAPP_H
 
