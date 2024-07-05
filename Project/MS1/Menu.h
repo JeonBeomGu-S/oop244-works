@@ -1,3 +1,9 @@
+//
+// Created by Beomgu Jeon on 2024-07-03.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #ifndef SENECA_MENU_H__
 #define SENECA_MENU_H__
 #include <iostream>

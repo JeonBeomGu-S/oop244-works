@@ -1,3 +1,9 @@
+//
+// Created by Beomgu Jeon on 2024-07-03.
+// Name: Beomgu Jeon
+// Email: bgjeon@myseneca.ca
+// Student ID: 126428234
+
 #include "Menu.h"
 #include "Utils.h"
 
