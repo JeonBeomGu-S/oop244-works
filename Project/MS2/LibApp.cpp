@@ -80,7 +80,10 @@ namespace seneca {
             } else {
                 done = true;
             }
+            if (!done)
+                cout << endl;
         }
+        cout << endl;
         cout << "-------------------------------------------" << endl;
         cout << "Thanks for using Seneca Library Application" << endl;
     }
