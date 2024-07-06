@@ -5,4 +5,10 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(MS3
         ms3_tester.cpp
+        Publication.cpp
+        Publication.h
+        Lib.h
+        Streamable.cpp
+        Streamable.h
+        Date.cpp
 )
