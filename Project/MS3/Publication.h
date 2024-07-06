@@ -26,6 +26,10 @@ namespace seneca {
 
     public:
         Publication();
+
+        // Rule of Three - Copy Constructor, Copy Assignment Overloading, and Destructor
+        Publication(const Publication& p);
+        Publication& operator=(const Publication& p);
         ~Publication();
 
         // Modifiers

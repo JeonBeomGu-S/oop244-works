@@ -19,6 +19,40 @@ namespace seneca {
         m_date = Date();
     }
 
+    Publication::Publication(const Publication& p) {
+        if (m_title != nullptr) {
+            delete[] m_title;
+            m_title = nullptr;
+        }
+
+        m_title = new char[strlen(p.m_title) + 1];
+        strcpy(m_title, p.m_title);
+        strcpy(m_shelfId, p.m_shelfId);
+        m_membership = p.m_membership;
+        m_libRef = p.m_libRef;
+        m_date = p.m_date;
+    }
+
+    Publication &Publication::operator=(const Publication &p) {
+        if (this != &p) {
+            if (m_title != nullptr) {
+                delete[] m_title;
+                m_title = nullptr;
+            }
+
+            if (p.m_title != nullptr) {
+                m_title = new char[strlen(p.m_title) + 1];
+                strcpy(m_title, p.m_title);
+            }
+            strcpy(m_shelfId, p.m_shelfId);
+            m_membership = p.m_membership;
+            m_libRef = p.m_libRef;
+            m_date = p.m_date;
+        }
+
+        return *this;
+    }
+
     Publication::~Publication() {
         if (m_title != nullptr) {
             delete[] m_title;
