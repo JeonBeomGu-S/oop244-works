@@ -62,5 +62,10 @@ namespace seneca {
    };
    std::ostream& operator<<(std::ostream& os, const Date& RO);
    std::istream& operator>>(std::istream& is, Date& RO);
+
+    extern bool seneca_test;
+    extern int seneca_year;
+    extern int seneca_mon;
+    extern int seneca_day;
 }
 #endif

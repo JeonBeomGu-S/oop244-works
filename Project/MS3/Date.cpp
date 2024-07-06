@@ -11,6 +11,11 @@
 using namespace std;
 #include "Date.h"
 namespace seneca {
+    bool seneca_test = false;
+    int seneca_year = 2024;
+    int seneca_mon = 12;
+    int seneca_day = 25;
+
     bool Date::validate() {
         errCode(NO_ERROR);
         if (m_year < MIN_YEAR || m_year > m_CUR_YEAR + 1) {
@@ -30,18 +35,28 @@ namespace seneca {
         return days[mon] + int((mon == 1) * ((m_year % 4 == 0) && (m_year % 100 != 0)) || (m_year % 400 == 0));
     }
 
-    int Date::systemYear() const {
-        time_t t = time(NULL);
-        tm lt = *localtime(&t);
-        return lt.tm_year + 1900;
+    int Date::systemYear()const {
+        int theYear = seneca_year;
+        if (!seneca_test) {
+            time_t t = time(NULL);
+            tm lt = *localtime(&t);
+            theYear = lt.tm_year + 1900;
+        }
+        return theYear;
     }
-
     void Date::setToToday() {
-        time_t t = time(NULL);
-        tm lt = *localtime(&t);
-        m_day = lt.tm_mday;
-        m_mon = lt.tm_mon + 1;
-        m_year = lt.tm_year + 1900;
+        if (seneca_test) {
+            m_day = seneca_day;
+            m_mon = seneca_mon;
+            m_year = seneca_year;
+        }
+        else {
+            time_t t = time(NULL);
+            tm lt = *localtime(&t);
+            m_day = lt.tm_mday;
+            m_mon = lt.tm_mon + 1;
+            m_year = lt.tm_year + 1900;
+        }
         errCode(NO_ERROR);
     }
 
@@ -89,7 +104,6 @@ namespace seneca {
     istream& Date::read(istream &is) {
         errCode(NO_ERROR);
         char separator;
-        char ch = 'x';
         is >> m_year >> separator >> m_mon >> separator >> m_day;
 
         if (is.fail()) {
@@ -97,10 +111,6 @@ namespace seneca {
             is.clear();
         } else {
             validate();
-        }
-
-        while (ch != '\n') {
-            ch = is.get();
         }
 
         return is;
