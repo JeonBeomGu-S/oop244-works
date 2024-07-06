@@ -25,8 +25,10 @@ namespace seneca {
             m_title = nullptr;
         }
 
-        m_title = new char[strlen(p.m_title) + 1];
-        strcpy(m_title, p.m_title);
+        if (p.m_title != nullptr) {
+            m_title = new char[strlen(p.m_title) + 1];
+            strcpy(m_title, p.m_title);
+        }
         strcpy(m_shelfId, p.m_shelfId);
         m_membership = p.m_membership;
         m_libRef = p.m_libRef;
