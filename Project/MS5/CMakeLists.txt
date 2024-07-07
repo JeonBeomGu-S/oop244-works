@@ -10,4 +10,19 @@ add_executable(MS5
         PublicationSelector.cpp
         PublicationSelector.h
         pubSel_Tester.cpp
+        Book.cpp
+        Book.h
+        Date.cpp
+        Date.h
+        Lib.h
+        LibApp.cpp
+        LibApp.h
+        Menu.cpp
+        Menu.h
+        Publication.cpp
+        Publication.h
+        Streamable.cpp
+        Streamable.h
+        Utils.cpp
+        Utils.h
 )
