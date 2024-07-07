@@ -13,7 +13,7 @@
 #include <cstring>
 #include "PublicationSelector.h"
 using namespace std;
-namespace sdds {
+namespace seneca {
    void PublicationSelector::display(int page) const {
       cout << m_title << endl 
            << " Row  |LocID | Title                          |Mem ID | Date       | Author          |" << endl

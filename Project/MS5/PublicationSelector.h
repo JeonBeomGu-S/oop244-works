@@ -8,10 +8,10 @@
 // Name               Date                 Reason
 //                    
 /////////////////////////////////////////////////////////////////
-#ifndef SDDS_PUBLICATIONSELECTOR_H
-#define SDDS_PUBLICATIONSELECTOR_H
+#ifndef SENECA_PUBLICATIONSELECTOR_H
+#define SENECA_PUBLICATIONSELECTOR_H
 #include "Publication.h"
-namespace sdds {
+namespace seneca {
    class PublicationSelector {
       const int allocationUnit{ 10 };
       const int m_pageSize{ };
@@ -41,4 +41,4 @@ namespace sdds {
       int run();
    };
 }
-#endif // !SDDS_PUBLICATIONSELECTOR_H
+#endif // !SENECA_PUBLICATIONSELECTOR_H

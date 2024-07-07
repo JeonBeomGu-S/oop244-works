@@ -16,7 +16,7 @@
 #include "PublicationSelector.h"
 
 using namespace std;
-using namespace sdds;
+using namespace seneca;
 
 // prints the publication with the library reference number "ref:
 void prnPub(Publication* p[], int size, int ref) {
