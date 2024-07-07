@@ -134,40 +134,49 @@ namespace seneca {
         m_date = Date();
 
         char buf[256];
+        char shelfId[SENECA_SHELF_ID_LEN + 1];
+        int membership = 0;
+        int libRef = -1;
+        Date date;
 
         if (conIO(is)) {
             cout << "Shelf No: ";
-            is >> m_shelfId;
+            is >> shelfId;
 
-            if (strlen(m_shelfId) != SENECA_SHELF_ID_LEN)
+            if (strlen(shelfId) != SENECA_SHELF_ID_LEN)
                 is.setstate(std::ios::failbit);
             else
                 is.ignore();
             cout << "Title: ";
             is.getline(buf, 256);
-            if (buf[0] != '\0') {
-                m_title = new char[strlen(buf) + 1];
-                strcpy(m_title, buf);
-            }
             cout << "Date: ";
-            is >> m_date;
-            if (!m_date)
+            is >> date;
+            if (!date)
                 is.setstate(std::ios::failbit);
         } else {
-            is >> m_libRef;
+            is >> libRef;
             is.ignore();
-            is.getline(m_shelfId, SENECA_SHELF_ID_LEN + 1, '\t');
+            is.getline(shelfId, SENECA_SHELF_ID_LEN + 1, '\t');
             is.getline(buf, 256, '\t');
+            is >> membership;
+            is.ignore();
+
+            is >> date;
+            if (!date)
+                is.setstate(std::ios::failbit);
+        }
+
+        if (!is.fail()) {
             if (buf[0] != '\0') {
                 m_title = new char[strlen(buf) + 1];
                 strcpy(m_title, buf);
             }
-            is >> m_membership;
-            is.ignore();
-
-            is >> m_date;
-            if (!m_date)
-                is.setstate(std::ios::failbit);
+            if (shelfId[0] != '\0') {
+                strcpy(m_shelfId, shelfId);
+            }
+            m_membership = membership;
+            m_libRef = libRef;
+            m_date = date;
         }
 
         return is;
