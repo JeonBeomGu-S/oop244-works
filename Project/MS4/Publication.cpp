@@ -102,6 +102,8 @@ namespace seneca {
         if (!(*this) || !m_date)
             return os;
 
+        string title(m_title);
+
         if (conIO(os)) {
             os << "| ";
             os.width(SENECA_SHELF_ID_LEN);
@@ -109,7 +111,12 @@ namespace seneca {
             os << " | ";
             os.width(SENECA_TITLE_WIDTH);
             os.fill('.');
-            os << left << m_title;
+
+            if (title.length() > SENECA_TITLE_WIDTH)
+                os << left << title.substr(0, SENECA_TITLE_WIDTH);
+            else
+                os << left << title;
+
             os << " | ";
             m_membership >= 10000 && m_membership < 100000 ?
                 os << m_membership : os << " N/A ";
