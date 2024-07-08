@@ -117,6 +117,9 @@ namespace seneca {
             os.fill('0');
             os << m_mon;
             os << "/";
+            os.width(2);
+            os.setf(ios::right);
+            os.fill('0');
             os << m_day;
         }
         return os;
