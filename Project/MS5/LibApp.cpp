@@ -102,7 +102,7 @@ namespace seneca {
         }
 
         cout << "Adding new publication to the library" << endl;
-        char type = getTypeFromNumber((int) m_pubTypeMenu.run());
+        char type = getPubTypeFromNumber((int) m_pubTypeMenu.run());
 
         if (type == 'X') {
             cout << "Aborted!" << endl;

@@ -31,7 +31,7 @@ namespace seneca {
         return input;
     }
 
-    char getTypeFromNumber(int number) {
+    char getPubTypeFromNumber(int number) {
         switch (number) {
             case 1:
                 return 'B';
