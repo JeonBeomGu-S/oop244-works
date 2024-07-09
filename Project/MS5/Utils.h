@@ -13,5 +13,6 @@
 
 namespace seneca {
     int getIntMM(int min, int max);
+    char getTypeFromNumber(int number);
 }
 #endif // SENECA_UTILS_H__

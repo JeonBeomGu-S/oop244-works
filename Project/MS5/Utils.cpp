@@ -30,4 +30,15 @@ namespace seneca {
 
         return input;
     }
+
+    char getTypeFromNumber(int number) {
+        switch (number) {
+            case 1:
+                return 'B';
+            case 2:
+                return 'P';
+            default:
+                return 'X';
+        }
+    }
 }

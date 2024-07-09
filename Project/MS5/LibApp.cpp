@@ -12,6 +12,33 @@
 using namespace std;
 
 namespace seneca {
+    LibApp::LibApp() {
+        m_changed = false;
+        m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library"
+                   << "Return publication to library";
+        m_exitMenu << "Save changes and exit" << "Cancel and go back to the main menu";
+        m_pubTypeMenu << "Book" << "Publication";
+
+        m_noOfLoadedPubs = 0;
+        m_lastLibRefNum = 0;
+
+        load();
+    }
+
+    LibApp::LibApp(const char* fileName) {
+        m_changed = false;
+        m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library"
+                   << "Return publication to library";
+        m_exitMenu << "Save changes and exit" << "Cancel and go back to the main menu";
+        m_pubTypeMenu << "Book" << "Publication";
+
+        strcpy(m_fileName, fileName);
+        m_noOfLoadedPubs = 0;
+        m_lastLibRefNum = 0;
+        
+        load();
+    }
+
     bool LibApp::confirm(const char *message) {
         Menu menu(message);
         menu << "Yes";
@@ -23,10 +50,38 @@ namespace seneca {
 
     void LibApp::load() {
         cout << "Loading Data" << endl;
+        ifstream file(m_fileName);
+        char type;
+
+        if (file.is_open()) {
+            while (file) {
+                file >> type;
+                file.ignore();
+                if (file) {
+                    if (type == 'P')
+                        m_pubs[m_noOfLoadedPubs] = new Publication();
+                    else if (type == 'B')
+                        m_pubs[m_noOfLoadedPubs] = new Book();
+                    if (m_pubs[m_noOfLoadedPubs] != nullptr) {
+                        file >> *m_pubs[m_noOfLoadedPubs];
+                        m_lastLibRefNum = m_pubs[m_noOfLoadedPubs]->getRef();
+                        m_noOfLoadedPubs++;
+                    }
+                }
+            }
+
+            file.close();
+        }
     }
 
     void LibApp::save() {
         cout << "Saving Data" << endl;
+        ofstream file(m_fileName);
+        int i = 0;
+        for (i = 0; i < m_noOfLoadedPubs; i++) {
+            if (m_pubs[i]->getRef() != 0)
+                file << *m_pubs[i] << endl;
+        }
     }
 
     void LibApp::search() {
@@ -41,10 +96,47 @@ namespace seneca {
     }
 
     void LibApp::newPublication() {
-        cout << "Adding new publication to library" << endl;
-        if (confirm("Add this publication to library?")) {
-            m_changed = true;
-            cout << "Publication added" << endl;
+        if (m_noOfLoadedPubs == SENECA_LIBRARY_CAPACITY) {
+            cout << "Library is at its maximum capacity!" << endl;
+            return;
+        }
+
+        cout << "Adding new publication to the library" << endl;
+        char type = getTypeFromNumber((int) m_pubTypeMenu.run());
+
+        if (type == 'X') {
+            cout << "Aborted!" << endl;
+            return;
+        }
+
+        Publication* publication;
+        if (type == 'B') {
+            publication = new Book();
+            publication->read(cin);
+        } else if (type == 'P') {
+            publication = new Publication();
+            publication->read(cin);
+        }
+
+        if (cin.fail()) {
+            cout << "Aborted!" << endl;
+            cin.ignore(1000, '\n');
+            return;
+        } else if (confirm("Add this publication to library?")) {
+            if (publication) {
+                m_lastLibRefNum++;
+                publication->setRef(m_lastLibRefNum);
+                m_pubs[m_noOfLoadedPubs] = publication;
+                m_noOfLoadedPubs++;
+                m_changed = true;
+                cout << "Publication added" << endl;
+            } else {
+                cout << "Failed to add publication!" << endl;
+                delete[] publication;
+            }
+        } else {
+            cout << "Aborted!" << endl;
+            return;
         }
     }
 
@@ -94,13 +186,5 @@ namespace seneca {
         cout << endl;
         cout << "-------------------------------------------" << endl;
         cout << "Thanks for using Seneca Library Application" << endl;
-    }
-
-    LibApp::LibApp() {
-        m_changed = false;
-        m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library"
-                   << "Return publication to library";
-        m_exitMenu << "Save changes and exit" << "Cancel and go back to the main menu";
-        load();
     }
 }
