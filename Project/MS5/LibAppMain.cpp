@@ -33,9 +33,9 @@ void runApp(const char* filename) {
    outFile.close();
    inFile.close();
    // setting test values
-   seneca::seneca_day = 10;
+   seneca::seneca_day = 13;
    seneca::seneca_mon = 8;
-   seneca::seneca_year = 2023;
+   seneca::seneca_year = 2024;
    seneca::seneca_test = true;
    seneca::LibApp app(filename);
    app.run();

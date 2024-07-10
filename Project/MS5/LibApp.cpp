@@ -133,10 +133,25 @@ namespace seneca {
     }
 
     void LibApp::returnPub() {
-        search();
-        cout << "Returning publication" << endl;
-        cout << "Publication returned" << endl;
-        m_changed = true;
+        cout << "Return publication to the library" << endl;
+        int libRef = search(SENECA_SEARCH_CHECKOUT);
+        Publication* p = getPub(libRef);
+        if (p != nullptr) {
+            cout << *p << endl;
+            if (confirm("Return Publication?")) {
+                Date today;
+                int days = today - p->checkoutDate();
+                if (days > 15) {
+                    cout << "Please pay $";
+                    cout.setf(ios::fixed);
+                    cout.precision(2);
+                    cout << 0.5 * (days - 15) << " penalty for being " << (days - 15) << " days late!" << endl;
+                }
+                p->set(0);
+                cout << "Publication returned" << endl;
+                m_changed = true;
+            }
+        }
     }
 
     void LibApp::newPublication() {
