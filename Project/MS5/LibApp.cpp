@@ -200,10 +200,24 @@ namespace seneca {
     }
 
     void LibApp::checkOutPub() {
-        search();
-        if (confirm("Check out publication?")) {
-            m_changed = true;
-            cout << "Publication checked out" << endl;
+        cout << "Checkout publication from the library" << endl;
+        int libRef = search(SENECA_SEARCH_AVAILABLE);
+        Publication* p = getPub(libRef);
+        if (p != nullptr) {
+            cout << *p << endl;
+
+            if (confirm("Check out publication?")) {
+                int membership;
+                cout << "Enter Membership number: ";
+                cin >> membership;
+                while (membership < 10000 || membership >= 100000) {
+                    cout << "Invalid membership number, try again: " << endl;
+                    cin >> membership;
+                }
+                p->set(membership);
+                m_changed = true;
+                cout << "Publication checked out" << endl;
+            }
         }
     }
 
