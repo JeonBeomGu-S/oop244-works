@@ -20,4 +20,8 @@ const int SENECA_SHELF_ID_LEN = 4;
 const int SENECA_LIBRARY_CAPACITY = 5000;
 // Maximum number of publications the library can hold.
 
+const int SENECA_SEARCH_ALL = 1;
+const int SENECA_SEARCH_CHECKOUT = 2;
+const int SENECA_SEARCH_AVAILABLE = 4;
+
 #endif //SENECA_LIB_H

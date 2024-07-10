@@ -31,9 +31,10 @@ namespace seneca {
         bool confirm(const char* message);
         void load();
         void save();
-        void search();
-        void returnPub();
+        int search(int searchOption);
+        Publication* getPub(int libRef);
 
+        void returnPub();
         void newPublication();
         void removePublication();
         void checkOutPub();

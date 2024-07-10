@@ -84,8 +84,46 @@ namespace seneca {
         }
     }
 
-    void LibApp::search() {
-        cout << "Searching for publication" << endl;
+    int LibApp::search(int searchOption) {
+        PublicationSelector selector("Select one of the following found matches:");
+        char type = getPubTypeFromNumber((int) m_pubTypeMenu.run());
+        if (type == 'X') {
+            cout << "Aborted!" << endl;
+            return -2;
+        }
+
+        char title[257];
+        cout << "Publication Title: ";
+        cin >> title;
+
+        int i = 0;
+        for (i = 0; i < m_noOfLoadedPubs; i++) {
+            // ToDo: Refactoring the code
+            if (m_pubs[i] != nullptr && m_pubs[i]->type() == type && *m_pubs[i] == title) {
+                if (searchOption == SENECA_SEARCH_ALL)
+                    selector << m_pubs[i];
+                else if (searchOption == SENECA_SEARCH_CHECKOUT && m_pubs[i]->onLoan())
+                    selector << m_pubs[i];
+                else if (searchOption == SENECA_SEARCH_AVAILABLE && !m_pubs[i]->onLoan())
+                    selector << m_pubs[i];
+            }
+        }
+
+        selector.sort();
+        int libRef = selector.run();
+        selector.reset();
+        return libRef;
+    }
+
+    Publication* LibApp::getPub(int libRef) {
+        int i = 0;
+        for (i = 0; i < m_noOfLoadedPubs; i++) {
+            if (m_pubs[i]->getRef() == libRef)
+                return m_pubs[i];
+        }
+
+        // if not found, return nullptr
+        return nullptr;
     }
 
     void LibApp::returnPub() {
@@ -141,9 +179,13 @@ namespace seneca {
     }
 
     void LibApp::removePublication() {
-        cout << "Removing publication from library" << endl;
-        search();
+        cout << "Removing publication from the library" << endl;
+        int libRef = search(SENECA_SEARCH_ALL);
+        Publication* p = getPub(libRef);
+        cout << *p << endl;
+
         if (confirm("Remove this publication from the library?")) {
+            p->setRef(0);
             m_changed = true;
             cout << "Publication removed" << endl;
         }
