@@ -181,7 +181,7 @@ namespace seneca {
             cout << "Aborted!" << endl;
             cin.ignore(1000, '\n');
             return;
-        } else if (confirm("Add this publication to library?")) {
+        } else if (confirm("Add this publication to the library?")) {
             if (publication) {
                 m_lastLibRefNum++;
                 publication->setRef(m_lastLibRefNum);
