@@ -109,9 +109,15 @@ namespace seneca {
             }
         }
 
-        selector.sort();
-        int libRef = selector.run();
-        selector.reset();
+        int libRef = -2;
+        if (selector) {
+            selector.sort();
+            libRef = selector.run();
+            selector.reset();
+        } else {
+            cout << "No matches found!" << endl;
+        }
+
         return libRef;
     }
 
@@ -182,12 +188,14 @@ namespace seneca {
         cout << "Removing publication from the library" << endl;
         int libRef = search(SENECA_SEARCH_ALL);
         Publication* p = getPub(libRef);
-        cout << *p << endl;
+        if (p != nullptr) {
+            cout << *p << endl;
 
-        if (confirm("Remove this publication from the library?")) {
-            p->setRef(0);
-            m_changed = true;
-            cout << "Publication removed" << endl;
+            if (confirm("Remove this publication from the library?")) {
+                p->setRef(0);
+                m_changed = true;
+                cout << "Publication removed" << endl;
+            }
         }
     }
 
