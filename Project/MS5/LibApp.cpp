@@ -94,7 +94,7 @@ namespace seneca {
 
         char title[257];
         cout << "Publication Title: ";
-        cin >> title;
+        cin.getline(title, 257);
 
         int i = 0;
         for (i = 0; i < m_noOfLoadedPubs; i++) {
@@ -114,6 +114,10 @@ namespace seneca {
             selector.sort();
             libRef = selector.run();
             selector.reset();
+            if (libRef == 0) {
+                cout << "Aborted!" << endl;
+                return -2;
+            }
         } else {
             cout << "No matches found!" << endl;
         }
