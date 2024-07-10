@@ -230,7 +230,7 @@ namespace seneca {
                 cout << "Enter Membership number: ";
                 cin >> membership;
                 while (membership < 10000 || membership >= 100000) {
-                    cout << "Invalid membership number, try again: " << endl;
+                    cout << "Invalid membership number, try again: ";
                     cin >> membership;
                 }
                 p->set(membership);
