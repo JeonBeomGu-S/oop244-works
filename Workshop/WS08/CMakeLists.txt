@@ -3,4 +3,12 @@ project(WS08)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(WS08 main.cpp)
+add_executable(WS08 main.cpp
+        Shape.cpp
+        Shape.h
+        Rectangle.cpp
+        Rectangle.h
+        Line.cpp
+        Line.h
+        LblShape.cpp
+        LblShape.h)
