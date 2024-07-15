@@ -22,6 +22,8 @@ namespace seneca {
         virtual std::ostream &operator<<(std::ostream &os) = 0;
         virtual std::istream &operator>>(std::istream &is) = 0;
     };
+    std::ostream &operator<<(std::ostream &os, const Streamable& streamable);
+    std::istream &operator>>(std::istream &is, Streamable& streamable);
 }
 
 #endif //SENECA_STREAMABLE_H
