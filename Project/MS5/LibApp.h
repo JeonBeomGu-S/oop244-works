@@ -42,6 +42,7 @@ namespace seneca {
     public:
         LibApp();
         LibApp(const char* fileName);
+        ~LibApp();
         void run();
     };
 }

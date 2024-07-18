@@ -39,6 +39,15 @@ namespace seneca {
         load();
     }
 
+    LibApp::~LibApp() {
+        if (m_pubs != nullptr) {
+            int i = 0;
+            for (i = 0; i < m_noOfLoadedPubs; ++i) {
+                delete m_pubs[i];
+            }
+        }
+    }
+
     bool LibApp::confirm(const char *message) {
         Menu menu(message);
         menu << "Yes";
