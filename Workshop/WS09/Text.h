@@ -15,7 +15,7 @@ namespace seneca {
         Text(const char *filename = nullptr);
 
         // rule of three
-        ~Text();
+        virtual ~Text();
         Text(const Text&);
         Text& operator=(const Text&);
 

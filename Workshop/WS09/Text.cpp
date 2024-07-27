@@ -15,8 +15,7 @@ namespace seneca {
     }
 
     const char &Text::operator[](int index) const {
-        // if (m_content != nullptr && index >= 0 && index < strlen(m_content) + 1)
-            return m_content[index];
+         return m_content[index];
     }
 
     Text::Text(const char *filename) {
